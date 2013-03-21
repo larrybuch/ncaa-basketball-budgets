@@ -1,0 +1,321 @@
+         .style("opacity", .6)
+         .style("fill", function(d){
+          if      (d.region == "m") {return "#0a9078"}
+          else if (d.region == "w") {return "#0066ab"}
+          else if (d.region == "s") {return "#e5b022"}
+          else if (d.region == "e") {return "#ef4423"}
+          else {return "gray"}
+
+         .attr("r", function(d){
+          return rScaleExpense(d.texpenses);
+         })
+
+
+
+
+
+        svg.selectAll("circle.rd7")
+           .data(schools)
+           .enter()
+           .append("circle")
+           .attr("cx", function(d){
+              return xScale(d.rd7x);
+            })
+           .attr("cy", function(d){
+              return yScale(d.rd7y);
+            })
+           .attr("r", function(d){
+              return rScaleExpense(d.texpenses);
+            })
+           .style("fill", function(d){
+              if(d.rd7r == "w") {return "red"}
+              else {return "gray"}
+           ;})
+           .style("opacity", .3)
+           .attr("class", "rd7");
+
+        svg.selectAll("text.rd7")
+         .data(schools)
+         .enter()
+         .append("text")
+         .text(function(d){
+            return d.school;
+         })
+         .attr("x", function(d){
+            return xScale(d.rd7x);
+         })
+         .attr("y", function(d){
+            return yScale(d.rd7y);
+         })
+         .style("font-size", "11px")
+         .style("color", function(d){
+              if(d.rd6r == "l") {return "white"}
+              else {return "black"}
+           ;});
+
+
+
+      function round2(schools){
+        svg.selectAll("circle.rd2")
+           .data(schools)
+           .enter()
+           .append("circle")
+           .attr("cx", function(d){
+              return xScale(d.rd2x);
+            })
+           .attr("cy", function(d){
+              return yScale(d.rd2y);
+            })
+           .attr("r", function(d){
+              return rScaleExpense(d.texpenses);
+            })
+           .style("fill", function(d){
+              if(d.rd2r == "w") {return "red"}
+              else {return "gray"}
+           ;})
+           .style("opacity", .3)
+           .attr("class", "rd2");
+
+        svg.selectAll("text.rd2")
+         .data(schools)
+         .enter()
+         .append("text")
+         .text(function(d){
+            return d.school;
+         })
+         .attr("x", function(d){
+            return xScale(d.rd2x);
+         })
+         .attr("y", function(d){
+            return yScale(d.rd2y);
+         })
+         .style("font-size", "11px");
+
+        console.log("round 2 bracket drawn")
+
+        // round3(schools);
+      }
+
+      function round3(schools){
+        svg.selectAll("circle.rd3")
+           .data(schools)
+           .enter()
+           .append("circle")
+           .attr("cx", function(d){
+              return xScale(d.rd3x);
+            })
+           .attr("cy", function(d){
+              return yScale(d.rd3y);
+            })
+           .attr("r", function(d){
+              return rScaleExpense(d.texpenses);
+            })
+           .style("fill", function(d){
+              if(d.rd3r == "w") {return "red"}
+              else {return "gray"}
+           ;})
+           .style("opacity", .3)
+           .attr("class", "rd3");
+
+        svg.selectAll("text.rd3")
+         .data(schools)
+         .enter()
+         .append("text")
+         .text(function(d){
+            return d.school;
+         })
+         .attr("x", function(d){
+            return xScale(d.rd3x);
+         })
+         .attr("y", function(d){
+            return yScale(d.rd3y);
+         })
+         .style("font-size", "11px")
+         .style("color", function(d){
+              if(d.rd2r == "l") {return "white"}
+              else {return "black"}
+           ;});
+
+        console.log("round 3 bracket drawn")
+
+        round4(schools);
+      }
+
+      function round4(schools){
+        svg.selectAll("circle.rd4")
+           .data(schools)
+           .enter()
+           .append("circle")
+           .attr("cx", function(d){
+              return xScale(d.rd4x);
+            })
+           .attr("cy", function(d){
+              return yScale(d.rd4y);
+            })
+           .attr("r", function(d){
+              return rScaleExpense(d.texpenses);
+            })
+           .style("fill", function(d){
+              if(d.rd4r == "w") {return "red"}
+              else {return "gray"}
+           ;})
+           .style("opacity", .3)
+           .attr("class", "rd4");
+
+        svg.selectAll("text.rd4")
+         .data(schools)
+         .enter()
+         .append("text")
+         .text(function(d){
+            return d.school;
+         })
+         .attr("x", function(d){
+            return xScale(d.rd4x);
+         })
+         .attr("y", function(d){
+            return yScale(d.rd4y);
+         })
+         .style("font-size", "11px")
+         .style("color", function(d){
+              if(d.rd3r == "l") {return "white"}
+              else {return "black"}
+           ;});
+
+        console.log("round 4 bracket drawn")
+
+        round5(schools);
+      }
+
+      function round5(schools){
+        svg.selectAll("circle.rd5")
+           .data(schools)
+           .enter()
+           .append("circle")
+           .attr("cx", function(d){
+              return xScale(d.rd5x);
+            })
+           .attr("cy", function(d){
+              return yScale(d.rd5y);
+            })
+           .attr("r", function(d){
+              return rScaleExpense(d.texpenses);
+            })
+           .style("fill", function(d){
+              if(d.rd5r == "w") {return "red"}
+              else {return "gray"}
+           ;})
+           .style("opacity", .3)
+           .attr("class", "rd5");
+
+        svg.selectAll("text.rd5")
+         .data(schools)
+         .enter()
+         .append("text")
+         .text(function(d){
+            return d.school;
+         })
+         .attr("x", function(d){
+            return xScale(d.rd5x);
+         })
+         .attr("y", function(d){
+            return yScale(d.rd5y);
+         })
+         .style("font-size", "11px")
+         .style("color", function(d){
+              if(d.rd4r == "l") {return "white"}
+              else {return "black"}
+           ;});
+
+        console.log("round 5 bracket drawn")
+
+        round6(schools);
+      }
+
+      function round6(schools){
+        svg.selectAll("circle.rd6")
+           .data(schools)
+           .enter()
+           .append("circle")
+           .attr("cx", function(d){
+              return xScale(d.rd6x);
+            })
+           .attr("cy", function(d){
+              return yScale(d.rd6y);
+            })
+           .attr("r", function(d){
+              return rScaleExpense(d.texpenses);
+            })
+           .style("fill", function(d){
+              if(d.rd6r == "w") {return "red"}
+              else {return "gray"}
+           ;})
+           .style("opacity", .3)
+           .attr("class", "rd6");
+
+        svg.selectAll("text.rd6")
+         .data(schools)
+         .enter()
+         .append("text")
+         .text(function(d){
+            return d.school;
+         })
+         .attr("x", function(d){
+            return xScale(d.rd6x);
+         })
+         .attr("y", function(d){
+            return yScale(d.rd6y);
+         })
+         .style("font-size", "11px")
+         .style("color", function(d){
+              if(d.rd5r == "l") {return "white"}
+              else {return "black"}
+           ;});
+
+        console.log("round 6 bracket drawn")
+
+        round7(schools);
+      }
+
+      function round7(schools){
+        svg.selectAll("circle.rd7")
+           .data(schools)
+           .enter()
+           .append("circle")
+           .attr("cx", function(d){
+              return xScale(d.rd7x);
+            })
+           .attr("cy", function(d){
+              return yScale(d.rd7y);
+            })
+           .attr("r", function(d){
+              return rScaleExpense(d.texpenses);
+            })
+           .style("fill", function(d){
+              if(d.rd7r == "w") {return "red"}
+              else {return "gray"}
+           ;})
+           .style("opacity", .3)
+           .attr("class", "rd7");
+
+        svg.selectAll("text.rd7")
+         .data(schools)
+         .enter()
+         .append("text")
+         .text(function(d){
+            return d.school;
+         })
+         .attr("x", function(d){
+            return xScale(d.rd7x);
+         })
+         .attr("y", function(d){
+            return yScale(d.rd7y);
+         })
+         .style("font-size", "11px")
+         .style("color", function(d){
+              if(d.rd6r == "l") {return "white"}
+              else {return "black"}
+           ;});
+
+        console.log("round 6 bracket drawn")
+
+        //round6(schools);
