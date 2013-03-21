@@ -738,7 +738,7 @@
     window.onload = function() { init() };
 
     //URL to public google spreadsheet
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0ApL2ZVhpOmONdEwxR2NMdWhDRWZkTDI5ejZodWZqQUE&output=html';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0ApL2ZVhpOmONdExHSWQwNWx3TFJjc3Zzd3lySWFJMGc&output=html';
 
     function init() {
       Tabletop.init( { key: public_spreadsheet_url,
@@ -971,6 +971,108 @@
             else if (d.region == "w") { return "left school" }
             else { return "school" };
          });
+
+      svg.selectAll("text.rd2l")
+       .data(schools)
+       .enter()
+       .append("text")
+       .text(function(d){
+          return d.shortname;
+       })
+       .attr("x", function(d){
+          if (d.region == "m" || d.region == "w")
+            {return xScale(parseFloat(d.rd2x)-.05); }
+          else {return xScale(parseFloat(d.rd2x)+.05);}
+       ;})
+       .attr("y", function(d){
+          return yScale(parseFloat(d.rd2y)+.2);
+       })
+       .attr("class", "live");
+
+      svg.selectAll("text.rd3l")
+       .data(schools)
+       .enter()
+       .append("text")
+       .text(function(d){
+          return d.shortname;
+       })
+       .attr("x", function(d){
+          if (d.region == "m" || d.region == "w")
+            {return xScale(parseFloat(d.rd3x)-.05); }
+          else {return xScale(parseFloat(d.rd3x)+.05);}
+       ;})
+       .attr("y", function(d){
+          return yScale(parseFloat(d.rd3y)+.2);
+       })
+       .attr("class", "live");
+
+      svg.selectAll("text.rd4l")
+       .data(schools)
+       .enter()
+       .append("text")
+       .text(function(d){
+          return d.shortname;
+       })
+       .attr("x", function(d){
+          if (d.region == "m" || d.region == "w")
+            {return xScale(parseFloat(d.rd4x)-.05); }
+          else {return xScale(parseFloat(d.rd4x)+.05);}
+       ;})
+       .attr("y", function(d){
+          return yScale(parseFloat(d.rd4y)+.2);
+       })
+       .attr("class", "live");
+
+      svg.selectAll("text.rd5l")
+       .data(schools)
+       .enter()
+       .append("text")
+       .text(function(d){
+          return d.shortname;
+       })
+       .attr("x", function(d){
+          if (d.region == "m" || d.region == "w")
+            {return xScale(parseFloat(d.rd5x)-.05); }
+          else {return xScale(parseFloat(d.rd5x)+.05);}
+       ;})
+       .attr("y", function(d){
+          return yScale(parseFloat(d.rd5y)+.2);
+       })
+       .attr("class", "live");
+
+      svg.selectAll("text.rd6l")
+       .data(schools)
+       .enter()
+       .append("text")
+       .text(function(d){
+          return d.shortname;
+       })
+       .attr("x", function(d){
+          if (d.region == "m" || d.region == "w")
+            {return xScale(parseFloat(d.rd6x)-.05); }
+          else {return xScale(parseFloat(d.rd6x)+.05);}
+       ;})
+       .attr("y", function(d){
+          return yScale(parseFloat(d.rd6y)+.2);
+       })
+       .attr("class", "live");
+
+      svg.selectAll("text.rd7l")
+       .data(schools)
+       .enter()
+       .append("text")
+       .text(function(d){
+          return d.shortname;
+       })
+       .attr("x", function(d){
+          if (d.region == "m" || d.region == "w")
+            {return xScale(parseFloat(d.rd7x)-.05); }
+          else {return xScale(parseFloat(d.rd7x)+.05);}
+       ;})
+       .attr("y", function(d){
+          return yScale(parseFloat(d.rd7y)+.2);
+       })
+       .attr("class", "live");
 
       svg.append("text")
          .attr("x", function(d){
