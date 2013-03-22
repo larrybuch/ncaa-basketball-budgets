@@ -1492,10 +1492,14 @@
         .transition()
         .duration(1000)
         .style("opacity", 0)
-      svg.selectAll(".live")
+      svg.selectAll("circle.live")
         .transition()
         .duration(1000)
-        .style("opacity", 0)
+        .attr("r", 0);
+      svg.selectAll("text.live")
+        .transition()
+        .duration(1000)
+        .style("font-size", 0);
       svg.selectAll(".school")
         .classed("left", function(d){
           if (d.region == "m"){return true}
@@ -1611,6 +1615,7 @@
          .classed("selected", false);
       d3.select("#show_list")
          .classed("selected", false);
+      restoreLive();
       };
 
     d3.select("#sort_predictions")
@@ -1675,10 +1680,14 @@
     }
 
     function showPredictions(){
-      svg.selectAll(".live")
+      svg.selectAll("circle.live")
         .transition()
         .duration(1000)
-        .style("opacity", 0)
+        .attr("r", 0);
+      svg.selectAll("text.live")
+        .transition()
+        .duration(1000)
+        .style("font-size", 0);
       svg.selectAll(".school")
         .classed("left", function(d){
           if (d.region == "m"){return true}
@@ -1715,6 +1724,10 @@
     });
 
     function showLive(){
+      svg.selectAll("text.live")
+        .transition()
+        .duration(1000)
+        .style("font-size", "11px");
       svg.selectAll(".live")
         .transition()
         .duration(1000)
@@ -1724,6 +1737,7 @@
         .duration(1000)
         .style("opacity", 0)
       showBracket();
+      restoreLive();
       svg.selectAll("circle.prediction")
         .transition()
         .duration(1000)
@@ -1746,10 +1760,14 @@
         });
 
     function showList(){
-      svg.selectAll(".live")
+      svg.selectAll("circle.live")
         .transition()
         .duration(1000)
-        .style("opacity", 0)
+        .attr("r", 0);
+      svg.selectAll("text.live")
+        .transition()
+        .duration(1000)
+        .style("font-size", 0);
       d3.select("#bracket_base")
         .transition()
         .duration(1000)
@@ -1818,6 +1836,23 @@
         .classed("selected", false);
       d3.select("#sort_predictions")
         .classed("selected", false);
+    }
+
+    function restoreLive(){
+      svg.selectAll("circle.live")
+         .transition()
+         .duration(1000)
+         .attr("r", function(d){
+          return rScaleExpense(d.texpenses);
+         })
+         .style("fill", "gray");
+
+      svg.selectAll("text.live")
+         .transition()
+         .duration(1000)
+         .style("opacity", .5)
+         .style("font-size", "11px")
+         .style("fill", "gray");
     }
 
     svg.selectAll("circle, text")
