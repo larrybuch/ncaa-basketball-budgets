@@ -464,7 +464,7 @@
           </div> -->
         </div>
         <p>
-          For the 2013 edition of March Madness, <span style="font-style: italic;">The New Yorker</span> <a href="http://www.newyorker.com/online/blogs/sportingscene/2013/03/ncaa-basketball-tournament-bracket-winners-budget.html">proposes a new predictive theory</a>: pick the schools that spend the most on men&#8217;s basketball. This infographic shows the financial data for each team (expenses and revenue), expressed as bubbles&mdash;the bigger the bubble, the bigger the dollar figure. The buttons on the left change how you can view the data (as a bracket, list, or map), while the ones in the center allow you to switch between expenses and revenue. The buttons on the right show our money prediction (in which the biggest spender always wins), along with a bracket of this year&#8217;s actual results. Check in throughout the tournament for updates.
+          For the 2013 edition of March Madness, <span style="font-style: italic;">The New Yorker</span> proposes a new predictive theory: pick the schools that spend the most on men&#8217;s basketball. This infographic shows the financial data for each team (expenses and revenue), expressed as bubbles&mdash;the bigger the bubble, the bigger the dollar figure. The buttons on the left change how you can view the data (as a bracket, list, or map), while the ones in the center allow you to switch between expenses and revenue. The buttons on the right show our money prediction (in which the biggest spender always wins), along with a bracket of this year&#8217;s actual results. Check in throughout the tournament for updates.
         </p>
       </div>
 
@@ -849,7 +849,10 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", "gray")
+         .style("fill", function(d){
+            if (d.rd1rp == d.rd1r){ return "red" }
+            else { return "gray" };
+         })
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd2l live win"}
             else { return "rd2l live lose"};
