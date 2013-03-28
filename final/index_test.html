@@ -347,17 +347,7 @@
 
   .live
   {
-    opacity: .4;
-  }
-
- .win
-  {
-
-  }
-
-  .lose
-  {
-
+    opacity: .8;
   }
 
   .small
@@ -464,7 +454,7 @@
           </div> -->
         </div>
         <p>
-          For the 2013 edition of March Madness, <span style="font-style: italic;">The New Yorker</span> proposes a new predictive theory: pick the schools that spend the most on men&#8217;s basketball. This infographic shows the financial data for each team (expenses and revenue), expressed as bubbles&mdash;the bigger the bubble, the bigger the dollar figure. The buttons on the left change how you can view the data (as a bracket, list, or map), while the ones in the center allow you to switch between expenses and revenue. The buttons on the right show our money prediction (in which the biggest spender always wins), along with a bracket of this year&#8217;s actual results. Check in throughout the tournament for updates.
+          For the 2013 edition of March Madness, <span style="font-style: italic;">The New Yorker</span> <a href="http://www.newyorker.com/online/blogs/sportingscene/2013/03/ncaa-basketball-tournament-bracket-winners-budget.html">proposes a new predictive theory</a>: pick the schools that spend the most money on men&#8217;s basketball. This infographic shows the financial data (expenses and revenue) for each team, expressed as bubbles&mdash;the bigger the bubble, the bigger the dollar figure. The buttons on the left change how you can view the data (as a bracket, list, or map), while the ones in the center allow you to switch between expenses and revenue. The buttons on the right show our money prediction (in which the biggest spender always wins), along with a bracket of this year&#8217;s actual results, where shaded circles represent our correct picks. Check in throughout the tournament for updates.
         </p>
       </div>
 
@@ -478,7 +468,7 @@
         <button id="sort_rev" class="padding-right">Revenue</button>
         <span class="sort_label"> </span>
         <button id="sort_predictions">The Money Bracket</button>
-        <button id="sort_live">Actual Results</button>
+        <button id="sort_live" class="selected">Actual Results</button>
       </div>
     </div>
   </div>
@@ -738,7 +728,7 @@
     window.onload = function() { init() };
 
     //URL to public google spreadsheet
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0ApL2ZVhpOmONdEwxR2NMdWhDRWZkTDI5ejZodWZqQUE&output=html';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0ApL2ZVhpOmONdExHSWQwNWx3TFJjc3Zzd3lySWFJMGc&output=html';
 
     function init() {
       Tabletop.init( { key: public_spreadsheet_url,
@@ -850,8 +840,13 @@
           return rScaleExpense(d.texpenses);
          })
          .style("fill", function(d){
-            if (d.rd1rp == d.rd1r){ return "red" }
-            else { return "gray" };
+            if (d.rd1rp == d.rd1r){ return "#d9d9d9" }
+            else { return "white" };
+         })
+         .style("stroke-width", 1.25)
+         .style("stroke", function(d){
+            if (d.rd1rp == d.rd1r){ return "white" }
+            else { return "#c4c4c4" };
          })
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd2l live win"}
@@ -871,7 +866,15 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", "gray")
+         .style("fill", function(d){
+            if (d.rd2rp == d.rd2r){ return "#b9b9b9" }
+            else { return "white" };
+         })
+         .style("stroke-width", 1.25)
+         .style("stroke", function(d){
+            if (d.rd2rp == d.rd2r){ return "white" }
+            else { return "#ccc" };
+         })
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd3l live win"}
             else { return "rd3l live lose"};
@@ -890,7 +893,15 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", "gray")
+         .style("fill", function(d){
+            if (d.rd3rp == d.rd3r){ return "#999999" }
+            else { return "white" };
+         })
+         .style("stroke-width", 1.25)
+         .style("stroke", function(d){
+            if (d.rd3rp == d.rd3r){ return "white" }
+            else { return "#ccc" };
+         })
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd4l live win"}
             else { return "rd4l live lose"};
@@ -909,7 +920,15 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", "gray")
+         .style("fill", function(d){
+            if (d.rd4rp == d.rd4r){ return "#898989" }
+            else { return "white" };
+         })
+         .style("stroke-width", 1.25)
+         .style("stroke", function(d){
+            if (d.rd4rp == d.rd4r){ return "white" }
+            else { return "#ccc" };
+         })
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd5l live win"}
             else { return "rd5l live lose"};
@@ -928,7 +947,15 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", "gray")
+         .style("fill", function(d){
+            if (d.rd5rp == d.rd5r){ return "#898989" }
+            else { return "white" };
+         })
+         .style("stroke-width", 1.25)
+         .style("stroke", function(d){
+            if (d.rd5rp == d.rd5r){ return "white" }
+            else { return "#ccc" };
+         })
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd6l live win"}
             else { return "rd6l live lose"};
@@ -947,7 +974,15 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", "gray")
+         .style("fill", function(d){
+            if (d.rd5rp == d.rd5r){ return "#898989" }
+            else { return "white" };
+         })
+         .style("stroke-width", 1.25)
+         .style("stroke", function(d){
+            if (d.rd5rp == d.rd5r){ return "white" }
+            else { return "#ccc" };
+         })
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd7l live win"}
             else { return "rd7l live lose"};
@@ -985,7 +1020,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd2x)-.05); }
-          else {return xScale(parseFloat(d.rd2x)+.05);}
+          else {return xScale(parseFloat(d.rd2x)-.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd2y)+.2);
@@ -1002,7 +1037,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd3x)-.05); }
-          else {return xScale(parseFloat(d.rd3x)+.05);}
+          else {return xScale(parseFloat(d.rd3x)-.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd3y)+.2);
@@ -1019,7 +1054,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd4x)-.05); }
-          else {return xScale(parseFloat(d.rd4x)+.05);}
+          else {return xScale(parseFloat(d.rd4x)-.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd4y)+.2);
@@ -1036,7 +1071,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd5x)-.05); }
-          else {return xScale(parseFloat(d.rd5x)+.05);}
+          else {return xScale(parseFloat(d.rd5x)-.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd5y)+.2);
@@ -1053,7 +1088,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd6x)-.05); }
-          else {return xScale(parseFloat(d.rd6x)+.05);}
+          else {return xScale(parseFloat(d.rd6x)-.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd6y)+.2);
@@ -1069,12 +1104,13 @@
        })
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
-            {return xScale(parseFloat(d.rd7x)-.05); }
-          else {return xScale(parseFloat(d.rd7x)+.05);}
+            {return xScale(parseFloat(d.rd7x)-.25); }
+          else {return xScale(parseFloat(d.rd7x));}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd7y)+.2);
        })
+       .style("font-size", "14px")
        .attr("class", "live");
 
       svg.append("text")
@@ -1168,7 +1204,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd2xp)-.05); }
-          else {return xScale(parseFloat(d.rd2xp)+.05);}
+          else {return xScale(parseFloat(d.rd2xp)-.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd2yp)+.2);
@@ -1207,7 +1243,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd3xp)-.05); }
-          else {return xScale(parseFloat(d.rd3xp)+.05);}
+          else {return xScale(parseFloat(d.rd3xp)-.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd3yp)+.2);
@@ -1246,7 +1282,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd4xp)-.05); }
-          else {return xScale(parseFloat(d.rd4xp)+.05);}
+          else {return xScale(parseFloat(d.rd4xp)-.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd4yp)+.2);
@@ -1284,7 +1320,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd5xp)-.05); }
-          else {return xScale(parseFloat(d.rd5xp)+.05);}
+          else {return xScale(parseFloat(d.rd5xp)-.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd5yp)+.2);
@@ -1552,6 +1588,8 @@
          .classed("selected", false);
       d3.select("#sort_predictions")
          .classed("selected", false);
+      d3.select("#sort_live")
+         .classed("selected", false);
       d3.select("#show_list")
          .classed("selected", false);
     };
@@ -1565,7 +1603,7 @@
       svg.selectAll(".live")
         .transition()
         .duration(1000)
-        .style("opacity", .4)
+        .style("opacity", .8)
       d3.select("#bracket_base")
         .transition()
         .duration(1000)
@@ -1585,6 +1623,19 @@
          .attr("cy", function(d){
             return yScale(d.rd1y);
          })
+      //reset the bracket to actual results
+      d3.select("#bracket_overlay")
+        .transition()
+        .duration(1000)
+        .style("opacity", 0)
+      svg.selectAll("circle.prediction")
+        .transition()
+        .duration(1000)
+        .attr("r", 0);
+      svg.selectAll(".small")
+         .transition()
+         .duration(1000)
+         .style("font-size", "0px");
       svg.selectAll("#container path")
         .transition()
         .duration(1000)
@@ -1614,6 +1665,10 @@
          .classed("selected", false);
       d3.select("#show_list")
          .classed("selected", false);
+      d3.select("#sort_predictions")
+         .classed("selected", false);
+      d3.select("#sort_live")
+         .classed("selected", true);
       };
 
     d3.select("#sort_predictions")
@@ -1721,7 +1776,7 @@
       svg.selectAll(".live")
         .transition()
         .duration(1000)
-        .style("opacity", .4)
+        .style("opacity", .8)
       d3.select("#bracket_overlay")
         .transition()
         .duration(1000)
@@ -1819,6 +1874,8 @@
         .classed("selected", false);
       d3.select("#show_bracket")
         .classed("selected", false);
+      d3.select("#sort_live")
+         .classed("selected", false);
       d3.select("#sort_predictions")
         .classed("selected", false);
     }
@@ -1861,7 +1918,7 @@
 
   <footer>
     <img src="http://www.newyorker.com/sandbox/business/images/xerox-sponsor-2.jpg">
-    <p class="credit">Source: U.S. Department of Education</p>
+    <p class="credit">By Larry Buchanan  |  Source: U.S. Department of Education</p>
   </footer>
 
   </body>
