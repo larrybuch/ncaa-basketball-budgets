@@ -347,7 +347,17 @@
 
   .live
   {
-    opacity: .8;
+    opacity: .4;
+  }
+
+ .win
+  {
+
+  }
+
+  .lose
+  {
+
   }
 
   .small
@@ -372,30 +382,6 @@
 */
 
 </style>
-
-<script type="text/javascript" async="async">
-  /*Omniture Script*/
-  s_c_il[1].cdw=s_c_il[1].d.write;s_c_il[1].cdwb="";s_c_il[1].d.write=function(m){s_c_il[1].cdwb+=m};
-  CN.stats.omniture.setStatus(CN.site['httpStatusCode']?CN.site['httpStatusCode']:200);
-  CN.stats.omniture.initPlugins();
-
-  if(CN.stats.omniture.thirdParty) {
-  CN.stats.omniture.setThirdParty();
-  }
-
-  if(CN.stats.omniture.trackPage || (document.body.getAttribute('className') != 'listC' || document.body.getAttribute('class') != 'listC')) {
-  if(CN.stats.omniture.doPageTracking2 == undefined) {
-  CN.stats.omniture.doPageTracking();
-  } else {
-  CN.stats.omniture.doPageTracking2();
-  }
-  if(s.pdvalue < 3 && CN.stats.insight) {
-  setTimeout(CN.stats.insight.doTracking, 1000);
-  }
-  }
-  s_c_il[1].d.write=s_c_il[1].cdw;s_c_il[1].crl(0,1)
-</script>
-
 
 </head>
 <body>
@@ -464,9 +450,21 @@
             <div class="label">Revenue</div>
             <div class="label-number" id="revenue">$26456789</div>
           </div>
+<!--           <div class="label-wrap">
+            <div class="label">Appearances</div>
+            <div class="label-number" id="appearance">40</div>
+          </div>
+          <div class="label-wrap">
+            <div class="label">Final Fours</div>
+            <div class="label-number" id="finalfours">10</div>
+          </div>
+          <div class="label-wrap">
+            <div class="label">Titles</div>
+            <div class="label-number" id="titles">10</div>
+          </div> -->
         </div>
         <p>
-          For the 2013 edition of March Madness, <span style="font-style: italic;">The New Yorker</span> <a href="http://www.newyorker.com/online/blogs/sportingscene/2013/03/ncaa-basketball-tournament-bracket-winners-budget.html">proposes a new predictive theory</a>: pick the schools that spend the most money on men&#8217;s basketball. This infographic shows the financial data (expenses and revenue) for each team, expressed as bubbles&mdash;the bigger the bubble, the bigger the dollar figure. The buttons on the left change how you can view the data (as a bracket, list, or map), while the ones in the center allow you to switch between expenses and revenue. The buttons on the right show our money prediction (in which the biggest spender always wins), along with a bracket of this year&#8217;s actual results, where shaded circles represent <a href="http://www.newyorker.com/online/blogs/sportingscene/2013/03/the-money-bracket-status-update.html">our correct picks</a>. Check in throughout the tournament for updates.
+          For the 2013 edition of March Madness, <span style="font-style: italic;">The New Yorker</span> <a href="http://www.newyorker.com/online/blogs/sportingscene/2013/03/ncaa-basketball-tournament-bracket-winners-budget.html">proposes a new predictive theory</a>: pick the schools that spend the most on men&#8217;s basketball. This infographic shows the financial data for each team (expenses and revenue), expressed as bubbles&mdash;the bigger the bubble, the bigger the dollar figure. The buttons on the left change how you can view the data (as a bracket, list, or map), while the ones in the center allow you to switch between expenses and revenue. The buttons on the right show our money prediction (in which the biggest spender always wins), along with a bracket of this year&#8217;s actual results. Check in throughout the tournament for updates.
         </p>
       </div>
 
@@ -480,7 +478,7 @@
         <button id="sort_rev" class="padding-right">Revenue</button>
         <span class="sort_label"> </span>
         <button id="sort_predictions">The Money Bracket</button>
-        <button id="sort_live" class="selected">Actual Results</button>
+        <button id="sort_live">Actual Results</button>
       </div>
     </div>
   </div>
@@ -740,7 +738,7 @@
     window.onload = function() { init() };
 
     //URL to public google spreadsheet
-    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0ApL2ZVhpOmONdEwxR2NMdWhDRWZkTDI5ejZodWZqQUE&output=html';
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0ApL2ZVhpOmONdExHSWQwNWx3TFJjc3Zzd3lySWFJMGc&output=html';
 
     function init() {
       Tabletop.init( { key: public_spreadsheet_url,
@@ -851,15 +849,7 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", function(d){
-            if (d.rd1rp == d.rd1r){ return "#d9d9d9" }
-            else { return "white" };
-         })
-         .style("stroke-width", 1.25)
-         .style("stroke", function(d){
-            if (d.rd1rp == d.rd1r){ return "white" }
-            else { return "#c4c4c4" };
-         })
+         .style("fill", "gray")
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd2l live win"}
             else { return "rd2l live lose"};
@@ -878,15 +868,7 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", function(d){
-            if (d.rd2rp == d.rd2r){ return "#b9b9b9" }
-            else { return "white" };
-         })
-         .style("stroke-width", 1.25)
-         .style("stroke", function(d){
-            if (d.rd2rp == d.rd2r){ return "white" }
-            else { return "#ccc" };
-         })
+         .style("fill", "gray")
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd3l live win"}
             else { return "rd3l live lose"};
@@ -905,15 +887,7 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", function(d){
-            if (d.rd3rp == d.rd3r){ return "#999999" }
-            else { return "white" };
-         })
-         .style("stroke-width", 1.25)
-         .style("stroke", function(d){
-            if (d.rd3rp == d.rd3r){ return "white" }
-            else { return "#ccc" };
-         })
+         .style("fill", "gray")
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd4l live win"}
             else { return "rd4l live lose"};
@@ -932,15 +906,7 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", function(d){
-            if (d.rd4rp == d.rd4r){ return "#898989" }
-            else { return "white" };
-         })
-         .style("stroke-width", 1.25)
-         .style("stroke", function(d){
-            if (d.rd4rp == d.rd4r){ return "white" }
-            else { return "#ccc" };
-         })
+         .style("fill", "gray")
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd5l live win"}
             else { return "rd5l live lose"};
@@ -959,15 +925,7 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", function(d){
-            if (d.rd5rp == d.rd5r){ return "#898989" }
-            else { return "white" };
-         })
-         .style("stroke-width", 1.25)
-         .style("stroke", function(d){
-            if (d.rd5rp == d.rd5r){ return "white" }
-            else { return "#ccc" };
-         })
+         .style("fill", "gray")
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd6l live win"}
             else { return "rd6l live lose"};
@@ -986,15 +944,7 @@
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
          })
-         .style("fill", function(d){
-            if (d.rd5rp == d.rd5r){ return "#898989" }
-            else { return "white" };
-         })
-         .style("stroke-width", 1.25)
-         .style("stroke", function(d){
-            if (d.rd5rp == d.rd5r){ return "white" }
-            else { return "#ccc" };
-         })
+         .style("fill", "gray")
          .attr("class", function(d){
             if (d.rd1r == "w") { return "rd7l live win"}
             else { return "rd7l live lose"};
@@ -1032,7 +982,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd2x)-.05); }
-          else {return xScale(parseFloat(d.rd2x)-.05);}
+          else {return xScale(parseFloat(d.rd2x)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd2y)+.2);
@@ -1049,7 +999,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd3x)-.05); }
-          else {return xScale(parseFloat(d.rd3x)-.05);}
+          else {return xScale(parseFloat(d.rd3x)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd3y)+.2);
@@ -1066,7 +1016,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd4x)-.05); }
-          else {return xScale(parseFloat(d.rd4x)-.05);}
+          else {return xScale(parseFloat(d.rd4x)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd4y)+.2);
@@ -1083,7 +1033,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd5x)-.05); }
-          else {return xScale(parseFloat(d.rd5x)-.05);}
+          else {return xScale(parseFloat(d.rd5x)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd5y)+.2);
@@ -1100,7 +1050,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd6x)-.05); }
-          else {return xScale(parseFloat(d.rd6x)-.05);}
+          else {return xScale(parseFloat(d.rd6x)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd6y)+.2);
@@ -1116,13 +1066,12 @@
        })
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
-            {return xScale(parseFloat(d.rd7x)-.25); }
-          else {return xScale(parseFloat(d.rd7x));}
+            {return xScale(parseFloat(d.rd7x)-.05); }
+          else {return xScale(parseFloat(d.rd7x)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd7y)+.2);
        })
-       .style("font-size", "14px")
        .attr("class", "live");
 
       svg.append("text")
@@ -1216,7 +1165,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd2xp)-.05); }
-          else {return xScale(parseFloat(d.rd2xp)-.05);}
+          else {return xScale(parseFloat(d.rd2xp)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd2yp)+.2);
@@ -1255,7 +1204,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd3xp)-.05); }
-          else {return xScale(parseFloat(d.rd3xp)-.05);}
+          else {return xScale(parseFloat(d.rd3xp)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd3yp)+.2);
@@ -1294,7 +1243,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd4xp)-.05); }
-          else {return xScale(parseFloat(d.rd4xp)-.05);}
+          else {return xScale(parseFloat(d.rd4xp)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd4yp)+.2);
@@ -1332,7 +1281,7 @@
        .attr("x", function(d){
           if (d.region == "m" || d.region == "w")
             {return xScale(parseFloat(d.rd5xp)-.05); }
-          else {return xScale(parseFloat(d.rd5xp)-.05);}
+          else {return xScale(parseFloat(d.rd5xp)+.05);}
        ;})
        .attr("y", function(d){
           return yScale(parseFloat(d.rd5yp)+.2);
@@ -1604,8 +1553,6 @@
          .classed("selected", false);
       d3.select("#sort_predictions")
          .classed("selected", false);
-      d3.select("#sort_live")
-         .classed("selected", false);
       d3.select("#show_list")
          .classed("selected", false);
     };
@@ -1619,7 +1566,7 @@
       svg.selectAll(".live")
         .transition()
         .duration(1000)
-        .style("opacity", .8)
+        .style("opacity", .4)
       d3.select("#bracket_base")
         .transition()
         .duration(1000)
@@ -1639,19 +1586,6 @@
          .attr("cy", function(d){
             return yScale(d.rd1y);
          })
-      //reset the bracket to actual results
-      d3.select("#bracket_overlay")
-        .transition()
-        .duration(1000)
-        .style("opacity", 0)
-      svg.selectAll("circle.prediction")
-        .transition()
-        .duration(1000)
-        .attr("r", 0);
-      svg.selectAll(".small")
-         .transition()
-         .duration(1000)
-         .style("font-size", "0px");
 
 
       svg.selectAll("#container path")
@@ -1683,10 +1617,6 @@
          .classed("selected", false);
       d3.select("#show_list")
          .classed("selected", false);
-      d3.select("#sort_predictions")
-         .classed("selected", false);
-      d3.select("#sort_live")
-         .classed("selected", true);
       restoreLive();
       };
 
@@ -1803,12 +1733,13 @@
       svg.selectAll(".live")
         .transition()
         .duration(1000)
-        .style("opacity", .8)
+        .style("opacity", .4)
       d3.select("#bracket_overlay")
         .transition()
         .duration(1000)
         .style("opacity", 0)
       showBracket();
+      restoreLive();
       svg.selectAll("circle.prediction")
         .transition()
         .duration(1000)
@@ -1839,11 +1770,11 @@
         .transition()
         .duration(1000)
         .style("font-size", 0);
-      d3.select("#bracket_overlay")
+      d3.select("#bracket_base")
         .transition()
         .duration(1000)
         .style("opacity", 0)
-      d3.select("#bracket_base")
+      d3.select("#bracket_overlay")
         .transition()
         .duration(1000)
         .style("opacity", 0)
@@ -1905,8 +1836,6 @@
         .classed("selected", false);
       d3.select("#show_bracket")
         .classed("selected", false);
-      d3.select("#sort_live")
-         .classed("selected", false);
       d3.select("#sort_predictions")
         .classed("selected", false);
     }
@@ -1917,12 +1846,15 @@
          .duration(1000)
          .attr("r", function(d){
           return rScaleExpense(d.texpenses);
-         });
+         })
+         .style("fill", "gray");
 
       svg.selectAll("text.live")
          .transition()
          .duration(1000)
-         .style("font-size", "11px");
+         .style("opacity", .4)
+         .style("font-size", "11px")
+         .style("fill", "gray");
     }
 
     svg.selectAll("circle, text")
@@ -1960,68 +1892,10 @@
     }
   </script>
 
-  <script type="text/javascript" src="/appjs/stats/omniture.js"></script>
-  <script type="text/javascript" src="/js/cn-fe-stats/zig.js"> </script>
-  <script type="text/javascript">
-        /**
-         * Prevent Omniture from firing until SocialShare has a chance to load
-         * which is located in scripts bottom.
-         */
-         (function() {
-            var oldTracking = CN.stats.omniture.doPageTracking;
-            CN.stats.omniture.doPageTracking = function(s) {
-                if (s == 'track') {
-                    CN.stats.omniture.doPageTracking = oldTracking;
-                    CN.stats.omniture.doPageTracking();
-                }
-            };
-        }());
-  </script>
-  <div id="statsHolder">
-      <script type="text/javascript">
-
-      </script>
-      <script language="JavaScript" type="text/javascript">
-          <!--
-              if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
-          //-->
-      </script>
-      <noscript>
-          <a href="http://www.omniture.com" title="Web Analytics">
-              <img src="//condenast.112.2o7.net/b/ss/conde-newyorker/1/H.15.1--NS/0" height="1" width="1" border="0" alt="" />
-          </a>
-      </noscript>
-      <!--/DO NOT REMOVE/-->
-  </div>
-  <script type="text/javascript">
-      //Omniture call to set page content type
-      CN.stats.omniture.setContentType("Sandbox");
-  </script>
-
-  <script type="text/javascript">
-          jQuery(function() {
-              if(s.pdvalue < 3){
-                  CN.stats.insight.doTracking(); //fires insight tag
-              }
-          });
-  </script>
-
-  <!-- Google analytics -->
-  <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script src="http://www.google-analytics.com/ga.js" type="text/javascript"> </script>
-  <script type="text/javascript">
-      try {
-          var pageTracker = _gat._getTracker("UA-8293713-14");
-          pageTracker._trackPageview();
-      } catch(err) {}
-  </script>
 
   <footer>
     <img src="http://www.newyorker.com/sandbox/business/images/xerox-sponsor-2.jpg">
-    <p class="credit">By Larry Buchanan  |  Source: U.S. Department of Education</p>
+    <p class="credit">Source: U.S. Department of Education</p>
   </footer>
 
   </body>
