@@ -320,10 +320,12 @@
       <div id="map">
       </div>
       <span class="kicker">idea of the week</span>
-      <h1>Lorem ipsum dolor sit</h1>
+      <h1>INEQUALITY AND NEW YORK&#8217;S SUBWAY</h1>
       <div class="description">
         <p>
-          Chatter for the graphic here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum delectus error at culpa doloribus natus mollitia itaque dolor autem distinctio quisquam reprehenderit optio quos id quas obcaecati saepe asperiores eum. loremLorem ipsum dolor sit amet, consectetur adipisicing elit. Amet facilis deserunt officiis provident ea! Et iste vel minima quas magni commodi repellat fugit libero soluta! Sapiente alias aliquam voluptate dolorum. deserunt officiis provident ea! Et iste vel minima quas magni deserunt officiis provident ea! Et iste vel minima quas magni commodi repellat fugit libero soluta! Sapiente alias aliquam voluptate dolorum.
+          New York City <a href="http://www.newyorker.com/online/blogs/newsdesk/2013/04/idea-of-the-week-inequality-and-new-yorks-subway.html">has a problem with income inequality</a>. And it&#8217;s getting worse&#8212;the top of the spectrum is gaining and the bottom is losing. Along individual subway lines, earnings range from poverty to considerable wealth. The interactive infographic here charts these shifts, using data on median income, from the <a href="http://www.census.gov/newsroom/releases/archives/american_community_survey_acs/cb12-175.html">U.S. Census Bureau</a>, for census tracts with subway stations.
+          <br>
+          <br>
         </p>
       </div>
       <div class="clear"></div>
@@ -393,7 +395,7 @@
 
     var stops;
     var container_dimensions = {width: 900, height: 400},
-                     margins = {top: 20, right: 20, bottom: 30, left: 90},
+                     margins = {top: 20, right: 20, bottom: 30, left: 118},
                      chart_dimensions = { width: container_dimensions.width - margins.left - margins.right-20,
                                           height: container_dimensions.height - margins.top - margins.bottom };
 
@@ -486,6 +488,13 @@
       chart.append("g")
            .attr("class", "y axis")
            .call(income_axis);
+      d3.select(".y.axis")
+        .append("text")
+        .attr("text-anchor","middle")
+        .text("median income")
+        .attr("transform", "rotate (270, 0, 0)")
+        .attr("x", -180)
+        .attr("y", -110);
 
       //append the line that gets changed
               d3.select("#chart")
